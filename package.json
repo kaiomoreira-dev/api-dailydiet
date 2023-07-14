@@ -11,7 +11,7 @@
     "migrate:create": "npm run knex -- migrate:make --migrations-directory ./database/migrations -x ts",
     "migrate:run": "npm run knex -- migrate:latest",
     "migrate:rollback": "npm run knex -- migrate:rollback",
-    "test": "vitest --single-thread --coverage --dir ./src",
+    "test:e2e": "vitest --single-thread --coverage --dir ./src",
     "build": "tsup src --out-dir build"
   },
   "keywords": [],
