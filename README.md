@@ -7,10 +7,19 @@
 </p>
 
 ## Intro
-
+Bem-vindo à Daily Diet API! Esta API foi criada para ajudá-lo a acompanhar suas refeições diárias, monitorar seus hábitos alimentares e alcançar seus objetivos de saúde. Com a Daily Diet API, você tem as ferramentas necessárias para se manter no caminho certo.
 
 ## Description
+* Daily Diet é uma API REST para gerenciamento de refeições de usuários em um sistema de registro de dieta. A API permitirá a criação de usuários, a identificação de usuários entre as requisições e o registro de refeições, que estarão relacionadas a cada usuário.
 
+## Technologies Used
+- Node.js
+- Fastify.js
+- Typescript
+- Knex
+- SQLite
+- Cookies for session
+- Vitest for testing
 
 ## Requisitos Funcionais(RF)
 * [x] Deve ser possível criar um usuário
@@ -34,7 +43,7 @@
 ## Regras de Negócios(RN)
 * [x] A transação pode do tipo crédito que somará ao valor total, ou débito que será * subtraído;
 * [x] Deve ser possível identificar o usuário entre as requisições;
-* [x] O usuário só pode visualizar transações que ele criou;
+*O usuário só pode visualizar transações que ele criou.*
 
 ## Running the app
 
@@ -57,6 +66,24 @@ $ npm run test:e2e
 ```bash
 # fix code with eslint
 $ npm run lint
+```
+
+## Migration
+```bash
+# run all migrations
+$ npm run migrate:run
+
+# create a new migration
+$ npm run migrate:create <name-migration>
+
+# rollback last migration created
+$ npm run migrate:rollback
+```
+
+## Knex
+```bash
+# run cli knex for node_modules
+$ npm run knex
 ```
 
 ## Build
