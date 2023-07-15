@@ -22,12 +22,6 @@ export async function snacksRoutes(app: FastifyInstance) {
         request.body,
       )
 
-      const timeSplit = time.split(':')
-      const dateSplit = date.split('/')
-
-      const dateFormmat = new Date(Date.parse(`${date}`))
-      const dateHoursString = `${date}T${time}:000Z`
-
       const idSession = request.cookies.idSession
 
       if (!idSession) {
@@ -75,8 +69,8 @@ export async function snacksRoutes(app: FastifyInstance) {
           name,
           idUser: user.id,
           description,
-          date: dateFormmat,
-          time: dateHoursString,
+          date,
+          time,
           isDiet,
         })
         .returning('*')
