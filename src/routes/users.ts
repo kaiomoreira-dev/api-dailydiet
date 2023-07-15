@@ -136,9 +136,9 @@ export async function usersRoutes(app: FastifyInstance) {
       const { snacksOutDiet } = totalCreatedSnacksOutDiet
 
       const metrics = {
-        totalSnacks,
-        snacksInDiet,
-        snacksOutDiet,
+        totalSnacks: Number(totalSnacks),
+        snacksInDiet: Number(snacksInDiet),
+        snacksOutDiet: Number(snacksOutDiet),
         bestSequencyInDiet: users.bestSequency,
       }
 
