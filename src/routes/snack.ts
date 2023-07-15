@@ -22,6 +22,12 @@ export async function snacksRoutes(app: FastifyInstance) {
         request.body,
       )
 
+      const timeSplit = time.split(':')
+      const dateSplit = date.split('/')
+
+      const dateFormmat = new Date(Date.parse(`${date}`))
+      const dateHoursString = `${date}T${time}:000Z`
+
       const idSession = request.cookies.idSession
 
       if (!idSession) {
@@ -52,14 +58,14 @@ export async function snacksRoutes(app: FastifyInstance) {
             isDiet,
           })
           .returning('*')
-        const userUpdated = await knex('users')
+        await knex('users')
           .where({ idSession })
           .update({
             inSequency: 0,
           })
           .returning('*')
 
-        return reply.status(201).send({ snack, userUpdated })
+        return reply.status(201).send({ snack })
       }
 
       // fluxo principal incrementar sequency dentro da dieta
@@ -69,8 +75,8 @@ export async function snacksRoutes(app: FastifyInstance) {
           name,
           idUser: user.id,
           description,
-          date,
-          time,
+          date: dateFormmat,
+          time: dateHoursString,
           isDiet,
         })
         .returning('*')
