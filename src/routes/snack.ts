@@ -74,8 +74,8 @@ export async function snacksRoutes(app: FastifyInstance) {
           name,
           idUser: user.id,
           description,
-          date: dateFormmat,
-          time: dateHoursString,
+          date: String(dateFormmat),
+          time: String(dateHoursString),
           isDiet,
         })
         .returning('*')

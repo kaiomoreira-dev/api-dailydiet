@@ -16,8 +16,8 @@ declare module 'knex/types/tables' {
       idUser: string
       name: string
       description: string
-      date: string | Date
-      time: string | Date
+      date: string
+      time: string
       isDiet: boolean
     }
   }
