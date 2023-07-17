@@ -41,7 +41,7 @@ export async function snacksRoutes(app: FastifyInstance) {
 
       // fluxo alternativo zera sequencia
       if (!isDiet) {
-        const snack = await knex('snacks')
+        const [snack] = await knex('snacks')
           .insert({
             id: randomUUID(),
             name,
@@ -63,7 +63,7 @@ export async function snacksRoutes(app: FastifyInstance) {
       }
 
       // fluxo principal incrementar sequency dentro da dieta
-      const snack = await knex('snacks')
+      const [snack] = await knex('snacks')
         .insert({
           id: randomUUID(),
           name,

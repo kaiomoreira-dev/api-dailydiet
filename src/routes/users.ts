@@ -25,7 +25,7 @@ export async function usersRoutes(app: FastifyInstance) {
       })
     }
 
-    const users = await knex('users')
+    const [users] = await knex('users')
       .insert({
         id: randomUUID(),
         name,
