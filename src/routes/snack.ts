@@ -58,7 +58,6 @@ export async function snacksRoutes(app: FastifyInstance) {
             inSequency: 0,
           })
           .returning('*')
-          .first()
 
         return reply.status(201).send({ snack })
       }
@@ -82,7 +81,6 @@ export async function snacksRoutes(app: FastifyInstance) {
           inSequency: user.inSequency + 1,
         })
         .returning('*')
-        .first()
 
       if (!userUpdated) {
         return reply.status(404).send({ error: 'User not found!' })
