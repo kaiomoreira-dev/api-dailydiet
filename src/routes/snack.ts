@@ -52,6 +52,7 @@ export async function snacksRoutes(app: FastifyInstance) {
             isDiet,
           })
           .returning('*')
+
         await knex('users')
           .where({ idSession })
           .update({
