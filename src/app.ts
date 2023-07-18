@@ -9,7 +9,7 @@ export const app = fastify()
 app.register(cors, {
   credentials: true,
   allowedHeaders: 'Content-Type, *',
-  origin: '*',
+  origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
