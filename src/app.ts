@@ -11,6 +11,8 @@ app.register(cors, {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 204,
+  allowedHeaders: '*',
+  exposedHeaders: '*',
 })
 
 app.register(cookie)
