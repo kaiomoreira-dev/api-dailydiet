@@ -34,7 +34,14 @@ export async function usersRoutes(app: FastifyInstance) {
       })
       .returning('*')
 
-    return reply.status(201).send(users)
+    return reply
+      .setCookie('idSession', idSession, {
+        path: '/',
+        httpOnly: true,
+        secure: true,
+      })
+      .status(201)
+      .send(users)
   })
   // Get a User by id
   app.get(

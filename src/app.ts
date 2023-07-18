@@ -8,14 +8,14 @@ export const app = fastify()
 
 app.register(cors, {
   credentials: true,
-  origin: '*',
+  origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   optionsSuccessStatus: 204,
-  allowedHeaders: '*',
-  exposedHeaders: '*',
 })
 
-app.register(cookie)
+app.register(cookie, {
+  secret: 'secret-cookie-dayli-diet',
+})
 
 app.register(usersRoutes, {
   prefix: 'api/users',
