@@ -8,7 +8,7 @@ export const app = fastify()
 
 app.register(cors, {
   credentials: true,
-  origin: 'https://domain1.com',
+  origin: '*',
   methods: 'GET, POST, PUT, PATCH, DELETE',
   allowedHeaders: 'Content-Type, *',
 })
