@@ -6,7 +6,12 @@ import cors from '@fastify/cors'
 
 export const app = fastify()
 
-app.register(cors, { credentials: true, origin: true, allowedHeaders: '*' })
+app.register(cors, {
+  credentials: true,
+  origin: 'https://domain1.com',
+  methods: 'GET, POST, PUT, PATCH, DELETE',
+  allowedHeaders: 'Content-Type, *',
+})
 
 app.register(cookie)
 
