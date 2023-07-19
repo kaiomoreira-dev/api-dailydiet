@@ -46,23 +46,23 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
 
       console.log(createSnackResponse.body)
 
-      expect(createSnackResponse.body.snack).toEqual([
+      expect(createSnackResponse.body.snack).toEqual(
         expect.objectContaining({
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
-      ])
+      )
     })
 
     it('should be able to incrementy sequency when create snack with if isDiet for equal true', async () => {
@@ -82,17 +82,15 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
 
       console.log(createSnackResponse.body)
 
-      const [user] = createUsersResponse.body
-
-      const { id: idUser } = user
+      const { id: idUser } = createUsersResponse.body
 
       const getUsersResponse = await request(app.server)
         .get(`/api/users/${idUser}`)
@@ -126,8 +124,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -139,8 +137,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -152,17 +150,15 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: false,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
 
       console.log(createSnackResponse.body)
 
-      const [user] = createUsersResponse.body
-
-      const { id: idUser } = user
+      const { id: idUser } = createUsersResponse.body
 
       const getUsersResponse = await request(app.server)
         .get(`/api/users/${idUser}`)
@@ -195,8 +191,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -208,8 +204,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: false,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -220,8 +216,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -232,17 +228,15 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
 
       console.log(createSnackResponse.body)
 
-      const [user] = createUsersResponse.body
-
-      const { id: idUser } = user
+      const { id: idUser } = createUsersResponse.body
 
       const getUsersResponse = await request(app.server)
         .get(`/api/users/${idUser}`)
@@ -277,22 +271,23 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
+      const { id: idSnack } = createSnackResponse.body.snack
 
       console.log(createSnackResponse.body)
 
       const updateSnackResponse = await request(app.server)
-        .put('/api/snacks')
+        .put(`/api/snacks/${idSnack}`)
         .send({
           name: 'Almoço',
           description: 'arroz, feijão, salada, legumes e carne',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(200)
@@ -304,8 +299,8 @@ describe('Snacks Routes', () => {
           name: 'Almoço',
           description: 'arroz, feijão, salada, legumes e carne',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
       )
     })
@@ -329,8 +324,8 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -341,8 +336,8 @@ describe('Snacks Routes', () => {
           name: 'Almoço',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -353,8 +348,8 @@ describe('Snacks Routes', () => {
           name: 'Café da Tarde',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
@@ -369,22 +364,22 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
         expect.objectContaining({
           name: 'Almoço',
           description: 'banana, ovos, bacon e igourte',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
         expect.objectContaining({
           name: 'Café da Tarde',
           description: 'banana, ovos, bacon e igourte',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
       ])
     })
@@ -406,18 +401,19 @@ describe('Snacks Routes', () => {
           name: 'Café da Tarde',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
 
-      const { id } = createSnackResponse.body.snack[0]
+      const { id } = createSnackResponse.body.snack
 
       const getSnacksResponse = await request(app.server)
         .get(`/api/snacks/${id}`)
         .set('Cookie', cookie)
         .expect(200)
+
       console.log(getSnacksResponse.body)
 
       expect(getSnacksResponse.body).toEqual(
@@ -425,8 +421,8 @@ describe('Snacks Routes', () => {
           name: 'Café da Tarde',
           description: 'banana, ovos, bacon e igourte',
           isDiet: 1,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         }),
       )
     })
@@ -450,12 +446,12 @@ describe('Snacks Routes', () => {
           name: 'Café da manhã',
           description: 'banana, ovos, bacon e igourte',
           isDiet: true,
-          date: '2023/07/15',
-          time: '15:00',
+          date: '2023-07-13T00:00:00.000Z',
+          time: '2023-07-13T08:30:00.000Z',
         })
         .set('Cookie', cookie)
         .expect(201)
-      const { id } = createSnackResponse.body.snack[0]
+      const { id } = createSnackResponse.body.snack
       const deleteSnackResponse = await request(app.server)
         .delete(`/api/snacks/${id}`)
         .set('Cookie', cookie)
