@@ -22,8 +22,6 @@ export async function snacksRoutes(app: FastifyInstance) {
         request.body,
       )
 
-      console.log(date, time)
-
       const idSession = request.cookies.idSession
 
       if (!idSession) {
@@ -103,7 +101,7 @@ export async function snacksRoutes(app: FastifyInstance) {
   )
   // Update a Snack by id for a user
   app.put(
-    '/',
+    '/:id',
     { preHandler: [checkIdSessionUser] },
     async (request: FastifyRequest, reply: FastifyReply) => {
       const snackSchema = z.object({
@@ -120,6 +118,11 @@ export async function snacksRoutes(app: FastifyInstance) {
 
       const idSession = request.cookies.idSession
 
+      const idSnackParams = z.object({
+        id: z.string().uuid().nonempty(),
+      })
+      const { id } = idSnackParams.parse(request.params)
+
       const getUser = await knex('users')
         .where({
           idSession,
@@ -133,7 +136,7 @@ export async function snacksRoutes(app: FastifyInstance) {
 
       const [snack] = await knex('snacks')
         .where({
-          idUser: getUser.id,
+          id,
         })
         .update({
           name,

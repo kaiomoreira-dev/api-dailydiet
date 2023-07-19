@@ -7,7 +7,6 @@ export async function checkIdSessionUser(
 ) {
   const { idSession } = request.cookies
 
-  console.log(idSession)
 
   if(!idSession){
     return reply.status(404).send({message: 'Cookie not found'})
