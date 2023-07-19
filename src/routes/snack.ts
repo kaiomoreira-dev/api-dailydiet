@@ -108,7 +108,7 @@ export async function snacksRoutes(app: FastifyInstance) {
         name: z.string().nonempty(),
         description: z.string().nonempty(),
         date: z.string().nonempty(),
-        time: z.string().datetime().nonempty(),
+        time: z.string().nonempty(),
         isDiet: z.boolean(),
       })
 
