@@ -9,8 +9,6 @@ export const app = fastify()
 app.register(cors, {
   credentials: true,
   origin: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  optionsSuccessStatus: 204,
 })
 
 app.register(cookie, {
