@@ -36,7 +36,14 @@ export async function usersRoutes(app: FastifyInstance) {
           })
           .returning('*')
 
-        return reply.status(201).send(users)
+        return reply
+          .setCookie('idSession', idSession, {
+            path: '/',
+            httpOnly: true,
+            secure: true,
+          })
+          .status(201)
+          .send(users)
       }
 
       return reply.status(200).send({ users })
@@ -44,6 +51,10 @@ export async function usersRoutes(app: FastifyInstance) {
 
     if (!idSession) {
       idSession = randomUUID()
+      reply.setCookie('idSession', idSession, {
+        path: '/',
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7days
+      })
     }
 
     const [users] = await knex('users')
@@ -55,7 +66,14 @@ export async function usersRoutes(app: FastifyInstance) {
       })
       .returning('*')
 
-    return reply.status(201).send(users)
+    return reply
+      .setCookie('idSession', idSession, {
+        path: '/',
+        httpOnly: true,
+        secure: true,
+      })
+      .status(201)
+      .send(users)
   })
   // Get a User by id
   app.get(
