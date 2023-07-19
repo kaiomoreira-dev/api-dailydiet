@@ -6,11 +6,12 @@ import cors from '@fastify/cors'
 
 export const app = fastify()
 
-// app.register(cors, {
-//   credentials: true,
-//   origin: '*',
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-// })
+app.register(cors, {
+  credentials: true,
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  optionsSuccessStatus: 204,
+})
 
 app.register(cookie, {
   secret: 'secret-cookie-dayli-diet',
