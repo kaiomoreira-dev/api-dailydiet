@@ -36,6 +36,10 @@ export async function usersRoutes(app: FastifyInstance) {
           })
           .returning('*')
 
+        if (!users) {
+          return reply.status(404).send({ error: 'User not found' })
+        }
+
         return reply
           .setCookie('idSession', idSession, {
             path: '/',
