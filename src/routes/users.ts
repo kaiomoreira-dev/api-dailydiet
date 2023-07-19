@@ -39,6 +39,7 @@ export async function usersRoutes(app: FastifyInstance) {
         path: '/',
         httpOnly: true,
         secure: true,
+        domain: 'localhost',
       })
       .status(201)
       .send(users)

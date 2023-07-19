@@ -22,6 +22,8 @@ export async function snacksRoutes(app: FastifyInstance) {
         request.body,
       )
 
+      console.log(date, time)
+
       const idSession = request.cookies.idSession
 
       if (!idSession) {
