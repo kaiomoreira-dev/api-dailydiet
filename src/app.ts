@@ -8,7 +8,7 @@ export const app = fastify()
 
 app.register(cors, {
   credentials: true,
-  origin: true,
+  origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   optionsSuccessStatus: 204,
 })

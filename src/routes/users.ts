@@ -41,7 +41,6 @@ export async function usersRoutes(app: FastifyInstance) {
             path: '/',
             httpOnly: true,
             secure: true,
-            domain: 'localhost',
             maxAge: 1000 * 60 * 60 * 24 * 7, // 7days
           })
           .status(201)
@@ -69,7 +68,6 @@ export async function usersRoutes(app: FastifyInstance) {
         path: '/',
         httpOnly: true,
         secure: true,
-        domain: 'localhost',
       })
       .status(201)
       .send(users)
